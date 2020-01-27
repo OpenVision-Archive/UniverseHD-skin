@@ -1692,14 +1692,14 @@ MultiContentEntryText(pos = (50, 43), size = (640, 60), font = 1, flags = RT_HAL
 				}</convert>
     </widget>
   </screen>
-  <screen name="IPKGMenu" position="0, 0" flags="wfNoBorder" transparent="0" title="IPKGMenu" backgroundColor="transparent" size="1920, 1080">
+  <screen name="OPKGMenu" position="0, 0" flags="wfNoBorder" transparent="0" title="OPKGMenu" backgroundColor="transparent" size="1920, 1080">
     <panel name="PANEL_TOP_TITLE" />
     <panel name="PANEL_WINDOW_MEDIUM" />
     <panel name="PANEL_BUTTONS_SOURCE_RG_X" />
     <ePixmap pixmap="UniverseHD/construct/symbols/plugins.png" position="1635,785" size="232,254" alphatest="blend" />
     <widget name="filelist" position="73,170" size="913,850" itemHeight="30" scrollbarMode="showOnDemand" transparent="1" />
   </screen>
-  <screen name="IPKGSource" position="0, 0" flags="wfNoBorder" transparent="0" title="IPKGSource" backgroundColor="transparent" size="1920, 1080">
+  <screen name="OPKGSource" position="0, 0" flags="wfNoBorder" transparent="0" title="OPKGSource" backgroundColor="transparent" size="1920, 1080">
     <panel name="PANEL_TOP_TITLE" />
     <panel name="PANEL_WINDOW_MEDIUM" />
     <panel name="PANEL_BUTTONS_SOURCE_RG_X" />
@@ -2173,7 +2173,7 @@ MultiContentEntryText(pos = (50, 43), size = (640, 60), font = 1, flags = RT_HAL
     </widget>
     <widget source="status" render="Label" position="73,940" size="913,80" halign="left" font="Universe-Regular; 20" backgroundColor="skin-background-colored" transparent="1" valign="bottom" />
   </screen>
-  <screen name="Ipkg" position="0, 0" flags="wfNoBorder" title="Installing Software..." transparent="0" backgroundColor="transparent" size="1920, 1080">
+  <screen name="Opkg" position="0, 0" flags="wfNoBorder" title="Installing Software..." transparent="0" backgroundColor="transparent" size="1920, 1080">
     <panel name="PANEL_TOP_TITLE" />
     <panel name="PANEL_WINDOW_MEDIUM" />
     <ePixmap pixmap="UniverseHD/construct/symbols/plugins.png" position="1635,785" size="232,254" alphatest="blend" />
@@ -2182,7 +2182,7 @@ MultiContentEntryText(pos = (50, 43), size = (640, 60), font = 1, flags = RT_HAL
     <widget name="status" position="73,170" size="913,80" font="Universe-Heavy;26" backgroundColor="skin-background" transparent="1" />
     <widget name="activityslider" position="73,378" size="913,30" borderWidth="0" pixmap="UniverseHD/colors/00ffffff.png" backgroundColor="darkgrey" transparent="0" zPosition="40" />
   </screen>
-  <screen name="IpkgInstaller" position="0, 0" flags="wfNoBorder" title="IpkgInstaller" transparent="0" backgroundColor="transparent" size="1920, 1080">
+  <screen name="OpkgInstaller" position="0, 0" flags="wfNoBorder" title="OpkgInstaller" transparent="0" backgroundColor="transparent" size="1920, 1080">
     <panel name="PANEL_TOP_TITLE" />
     <panel name="PANEL_WINDOW_MEDIUM" />
     <panel name="PANEL_BUTTONS_SOURCE_RG_X" />
