@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
+from __future__ import print_function
 #!/usr/bin/env python
-# -*- coding: iso-8859-1 -*-
 #######################################################################
 #
 #    MyUniverse
@@ -149,7 +150,7 @@ class MyUniverse(ConfigListScreen, Screen):
 	def GetPicturePath(self):
 		try:
 			returnValue = self["config"].getCurrent()[1].value
-			#print "\n selectedOption: " + returnValue + "\n"
+			#print("\n selectedOption: " + returnValue + "\n")
 			path = "/usr/lib/enigma2/python/Plugins/Extensions/MyUniverse/images/" + returnValue + ".jpg"
 			return path
 		except:
@@ -162,10 +163,10 @@ class MyUniverse(ConfigListScreen, Screen):
 	def ShowPicture(self):
 		self.PicLoad.setPara([self["previewimage"].instance.size().width(),self["previewimage"].instance.size().height(),self.Scale[0],self.Scale[1],0,1,"#44000000"])
 		self.PicLoad.startDecode(self.GetPicturePath())
-		#print "showing image"
+		#print("showing image")
 		
 	def DecodePicture(self, PicInfo = ""):
-		#print "decoding picture"
+		#print("decoding picture")
 		ptr = self.PicLoad.getData()
 		self["previewimage"].instance.setPixmap(ptr)	
 
@@ -182,13 +183,13 @@ class MyUniverse(ConfigListScreen, Screen):
 		self.ShowPicture()
 	
 	def keyDown(self):
-		#print "key down"
+		#print("key down")
 		self["config"].instance.moveSelection(self["config"].instance.moveDown)
 		#ConfigListScreen.keyDown(self)
 		self.ShowPicture()
 		
 	def keyUp(self):
-		#print "key up"
+		#print("key up")
 		self["config"].instance.moveSelection(self["config"].instance.moveUp)
 		#ConfigListScreen.keyUp(self)
 		self.ShowPicture()

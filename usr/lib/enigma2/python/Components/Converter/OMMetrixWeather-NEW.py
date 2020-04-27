@@ -1,5 +1,5 @@
+# -*- coding: utf-8 -*-
 #!/usr/bin/env python
-# -*- coding: iso-8859-1 -*-
 #######################################################################
 #
 #    MetrixWeather for Enigma2
