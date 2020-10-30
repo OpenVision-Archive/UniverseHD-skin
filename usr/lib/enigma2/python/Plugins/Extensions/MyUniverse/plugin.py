@@ -86,7 +86,7 @@ config.plugins.MyUniverse.SkinTransparency = ConfigSelection(default="#bbaaaaaa"
 				])
 
 def main(session, **kwargs):
-	session.open(MyUniverse,"/usr/lib/enigma2/python/Plugins/Extensions/MyUniverse/images/#007392bd.jpg")
+	session.open(MyUniverse, "/usr/lib/enigma2/python/Plugins/Extensions/MyUniverse/images/#007392bd.jpg")
 
 def Plugins(**kwargs):
 	return PluginDescriptor(name="MyUniverse", description=_("Configuration tool for UniverseHD"), where = PluginDescriptor.WHERE_PLUGINMENU, icon="plugin.png", fnc=main)
@@ -143,7 +143,7 @@ class MyUniverse(ConfigListScreen, Screen):
 		
 
 		ConfigListScreen.__init__(self, list)
-		self["actions"] = ActionMap(["OkCancelActions","DirectionActions", "InputActions", "ColorActions"], {"left": self.keyLeft,"down": self.keyDown,"up": self.keyUp,"right": self.keyRight,"red": self.exit,"yellow": self.reboot, "blue": self.showInfo, "green": self.save,"cancel": self.exit}, -1)
+		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "InputActions", "ColorActions"], {"left": self.keyLeft,"down": self.keyDown,"up": self.keyUp,"right": self.keyRight,"red": self.exit,"yellow": self.reboot, "blue": self.showInfo, "green": self.save,"cancel": self.exit}, -1)
 		self.onLayoutFinish.append(self.UpdateComponents)
 
 		
@@ -161,7 +161,7 @@ class MyUniverse(ConfigListScreen, Screen):
 		self.onLayoutFinish.append(self.ShowPicture)
 	
 	def ShowPicture(self):
-		self.PicLoad.setPara([self["previewimage"].instance.size().width(),self["previewimage"].instance.size().height(),self.Scale[0],self.Scale[1],0,1,"#44000000"])
+		self.PicLoad.setPara([self["previewimage"].instance.size().width(), self["previewimage"].instance.size().height(), self.Scale[0], self.Scale[1], 0, 1, "#44000000"])
 		self.PicLoad.startDecode(self.GetPicturePath())
 		#print("showing image")
 		
@@ -195,7 +195,7 @@ class MyUniverse(ConfigListScreen, Screen):
 		self.ShowPicture()
 	
 	def reboot(self):
-		restartbox = self.session.openWithCallback(self.restartGUI,MessageBox,_("Do you really want to reboot now?"), MessageBox.TYPE_YESNO)
+		restartbox = self.session.openWithCallback(self.restartGUI, MessageBox, _("Do you really want to reboot now?"), MessageBox.TYPE_YESNO)
 		restartbox.setTitle(_("Restart GUI"))
 		
 	def showInfo(self):
@@ -225,7 +225,7 @@ class MyUniverse(ConfigListScreen, Screen):
 			
 			
 			system('cp ' + self.skinFile + ' ' + self.skinFileBackup)
-			o = open(self.skinFile,"w")
+			o = open(self.skinFile, "w")
 			regex_col = re.compile(r".*<color name=\"skin-background-colored\".*$", re.IGNORECASE)
 			regex_trans = re.compile(r".*<color name=\"skin-transparency\".*$", re.IGNORECASE)
 			for line in open(self.skinFileBackup):
@@ -252,5 +252,5 @@ class MyUniverse(ConfigListScreen, Screen):
 			self.close()
 
 	def exit(self):
-		restartbox = self.session.openWithCallback(self.restartGUI,MessageBox,_("GUI needs a restart to apply a new skin.\nDo you want to Restart the GUI now?"), MessageBox.TYPE_YESNO)
+		restartbox = self.session.openWithCallback(self.restartGUI, MessageBox, _("GUI needs a restart to apply a new skin.\nDo you want to Restart the GUI now?"), MessageBox.TYPE_YESNO)
 		restartbox.setTitle(_("Restart GUI"))
