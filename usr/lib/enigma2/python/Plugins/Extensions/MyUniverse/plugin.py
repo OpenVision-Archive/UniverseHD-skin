@@ -143,7 +143,7 @@ class MyUniverse(ConfigListScreen, Screen):
 		
 
 		ConfigListScreen.__init__(self, list)
-		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "InputActions", "ColorActions"], {"left": self.keyLeft,"down": self.keyDown,"up": self.keyUp,"right": self.keyRight,"red": self.exit,"yellow": self.reboot, "blue": self.showInfo, "green": self.save,"cancel": self.exit}, -1)
+		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "InputActions", "ColorActions"], {"left": self.keyLeft, "down": self.keyDown, "up": self.keyUp, "right": self.keyRight, "red": self.exit, "yellow": self.reboot, "blue": self.showInfo, "green": self.save, "cancel": self.exit}, -1)
 		self.onLayoutFinish.append(self.UpdateComponents)
 
 		
