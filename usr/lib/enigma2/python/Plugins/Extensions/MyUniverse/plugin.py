@@ -47,11 +47,13 @@ gettext.bindtextdomain("enigma2", resolveFilename(SCOPE_LANGUAGE))
 gettext.textdomain("enigma2")
 gettext.bindtextdomain("MyUniverse", "%s%s" % (resolveFilename(SCOPE_PLUGINS), "Extensions/MyUniverse/locale/"))
 
+
 def _(txt):
 	t = gettext.dgettext("MyUniverse", txt)
 	if t == txt:
 		t = gettext.gettext(txt)
 	return t
+
 
 def translateBlock(block):
 	for x in TranslationHelper:
@@ -60,6 +62,7 @@ def translateBlock(block):
 	return block
 
 #############################################################
+
 
 config.plugins.MyUniverse = ConfigSubsection()
 #config.skin = ConfigSubsection()
@@ -85,13 +88,16 @@ config.plugins.MyUniverse.SkinTransparency = ConfigSelection(default="#bbaaaaaa"
 				("#ffaaaaaa", _("Level 9 - More transparent"))
 				])
 
+
 def main(session, **kwargs):
 	session.open(MyUniverse, "/usr/lib/enigma2/python/Plugins/Extensions/MyUniverse/images/#007392bd.jpg")
+
 
 def Plugins(**kwargs):
 	return PluginDescriptor(name="MyUniverse", description=_("Configuration tool for UniverseHD"), where=PluginDescriptor.WHERE_PLUGINMENU, icon="plugin.png", fnc=main)
 
 #######################################################################
+
 
 class MyUniverse(ConfigListScreen, Screen):
 	skin = """
@@ -141,12 +147,10 @@ class MyUniverse(ConfigListScreen, Screen):
 		list.append(getConfigListEntry(_("Skin Color"), config.plugins.MyUniverse.SkinColor))
 		list.append(getConfigListEntry(_("Skin Transparency"), config.plugins.MyUniverse.SkinTransparency))
 		
-
 		ConfigListScreen.__init__(self, list)
 		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "InputActions", "ColorActions"], {"left": self.keyLeft, "down": self.keyDown, "up": self.keyUp, "right": self.keyRight, "red": self.exit, "yellow": self.reboot, "blue": self.showInfo, "green": self.save, "cancel": self.exit}, -1)
 		self.onLayoutFinish.append(self.UpdateComponents)
 
-		
 	def GetPicturePath(self):
 		try:
 			returnValue = self["config"].getCurrent()[1].value
@@ -173,7 +177,6 @@ class MyUniverse(ConfigListScreen, Screen):
 	def UpdateComponents(self):
 		self.UpdatePicture()
 				
-
 	def keyLeft(self):	
 		ConfigListScreen.keyLeft(self)	
 		self.ShowPicture()
@@ -223,7 +226,6 @@ class MyUniverse(ConfigListScreen, Screen):
 			system('cp ' + self.backgroundsDir + 'alt/' + config.plugins.MyUniverse.SkinColor.value + '/background-window.png ' + self.backgroundsDir)
 			system('cp ' + self.backgroundsDir + 'alt/' + config.plugins.MyUniverse.SkinColor.value + '/background-symbol.png ' + self.backgroundsDir)
 			
-			
 			system('cp ' + self.skinFile + ' ' + self.skinFileBackup)
 			o = open(self.skinFile, "w")
 			regex_col = re.compile(r".*<color name=\"skin-background-colored\".*$", re.IGNORECASE)
@@ -240,7 +242,6 @@ class MyUniverse(ConfigListScreen, Screen):
 		#config.skin.primary_skin.value = "UniverseHD/skin.xml"
 		configfile.save()
 		
-
 	def restartGUI(self, answer):
 		if answer is True:  
 			configfile.save()

@@ -22,6 +22,7 @@ from Components.Converter.Converter import Converter
 from Components.config import config
 from Components.Element import cached
 
+
 class OMMetrixWeather(Converter, object):
 	def __init__(self, type):
 		Converter.__init__(self, type)
