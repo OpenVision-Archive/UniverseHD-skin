@@ -146,7 +146,7 @@ class MyUniverse(ConfigListScreen, Screen):
 		list = []
 		list.append(getConfigListEntry(_("Skin Color"), config.plugins.MyUniverse.SkinColor))
 		list.append(getConfigListEntry(_("Skin Transparency"), config.plugins.MyUniverse.SkinTransparency))
-		
+
 		ConfigListScreen.__init__(self, list)
 		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "InputActions", "ColorActions"], {"left": self.keyLeft, "down": self.keyDown, "up": self.keyUp, "right": self.keyRight, "red": self.exit, "yellow": self.reboot, "blue": self.showInfo, "green": self.save, "cancel": self.exit}, -1)
 		self.onLayoutFinish.append(self.UpdateComponents)
@@ -159,48 +159,48 @@ class MyUniverse(ConfigListScreen, Screen):
 			return path
 		except:
 			return "/usr/lib/enigma2/python/Plugins/Extensions/MyUniverse/images/#007392bd.jpg"
-		
+
 	def UpdatePicture(self):
 		self.PicLoad.PictureData.get().append(self.DecodePicture)
 		self.onLayoutFinish.append(self.ShowPicture)
-	
+
 	def ShowPicture(self):
 		self.PicLoad.setPara([self["previewimage"].instance.size().width(), self["previewimage"].instance.size().height(), self.Scale[0], self.Scale[1], 0, 1, "#44000000"])
 		self.PicLoad.startDecode(self.GetPicturePath())
 		#print("showing image")
-		
+
 	def DecodePicture(self, PicInfo=""):
 		#print("decoding picture")
 		ptr = self.PicLoad.getData()
-		self["previewimage"].instance.setPixmap(ptr)	
+		self["previewimage"].instance.setPixmap(ptr)
 
 	def UpdateComponents(self):
 		self.UpdatePicture()
-				
-	def keyLeft(self):	
-		ConfigListScreen.keyLeft(self)	
+
+	def keyLeft(self):
+		ConfigListScreen.keyLeft(self)
 		self.ShowPicture()
 
 	def keyRight(self):
 		ConfigListScreen.keyRight(self)
 		self.ShowPicture()
-	
+
 	def keyDown(self):
 		#print("key down")
 		self["config"].instance.moveSelection(self["config"].instance.moveDown)
 		#ConfigListScreen.keyDown(self)
 		self.ShowPicture()
-		
+
 	def keyUp(self):
 		#print("key up")
 		self["config"].instance.moveSelection(self["config"].instance.moveUp)
 		#ConfigListScreen.keyUp(self)
 		self.ShowPicture()
-	
+
 	def reboot(self):
 		restartbox = self.session.openWithCallback(self.restartGUI, MessageBox, _("Do you really want to reboot now?"), MessageBox.TYPE_YESNO)
 		restartbox.setTitle(_("Restart GUI"))
-		
+
 	def showInfo(self):
 		self.session.open(MessageBox, _("Information"), MessageBox.TYPE_INFO)
 
@@ -210,7 +210,7 @@ class MyUniverse(ConfigListScreen, Screen):
         			x[1].save()
 			else:
        				pass
-       			
+
 		###########READING DATA FILES
 		try:
 			###Main XML
@@ -225,14 +225,14 @@ class MyUniverse(ConfigListScreen, Screen):
 			system('cp ' + self.backgroundsDir + 'alt/' + config.plugins.MyUniverse.SkinColor.value + '/background-window-title.png ' + self.backgroundsDir)
 			system('cp ' + self.backgroundsDir + 'alt/' + config.plugins.MyUniverse.SkinColor.value + '/background-window.png ' + self.backgroundsDir)
 			system('cp ' + self.backgroundsDir + 'alt/' + config.plugins.MyUniverse.SkinColor.value + '/background-symbol.png ' + self.backgroundsDir)
-			
+
 			system('cp ' + self.skinFile + ' ' + self.skinFileBackup)
 			o = open(self.skinFile, "w")
 			regex_col = re.compile(r".*<color name=\"skin-background-colored\".*$", re.IGNORECASE)
 			regex_trans = re.compile(r".*<color name=\"skin-transparency\".*$", re.IGNORECASE)
 			for line in open(self.skinFileBackup):
-				line = regex_col.sub("     <color name=\"skin-background-colored\" value=\"%s\" />" % config.plugins.MyUniverse.SkinColor.value, line)	
-				line = regex_trans.sub("     <color name=\"skin-transparency\" value=\"%s\" />" % config.plugins.MyUniverse.SkinTransparency.value, line)	
+				line = regex_col.sub("     <color name=\"skin-background-colored\" value=\"%s\" />" % config.plugins.MyUniverse.SkinColor.value, line)
+				line = regex_trans.sub("     <color name=\"skin-transparency\" value=\"%s\" />" % config.plugins.MyUniverse.SkinTransparency.value, line)
 				o.write(line)
 			o.close()
 			#system('rm -rf ' + self.sourceSkinFile)
@@ -241,9 +241,9 @@ class MyUniverse(ConfigListScreen, Screen):
 			self.session.open(MessageBox, _("Error creating Skin!"), MessageBox.TYPE_ERROR)
 		#config.skin.primary_skin.value = "UniverseHD/skin.xml"
 		configfile.save()
-		
+
 	def restartGUI(self, answer):
-		if answer is True:  
+		if answer is True:
 			configfile.save()
 			self.session.open(TryQuitMainloop, 3)
 		else:

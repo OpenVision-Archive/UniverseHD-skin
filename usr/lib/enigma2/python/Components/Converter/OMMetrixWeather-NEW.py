@@ -93,7 +93,7 @@ class OMMetrixWeather(Converter, object):
 				elif self.type == "title":
 					return self.getCF() + " | " + config.plugins.MetrixWeather.currentLocation.saved_value
 				elif self.type == "CF":
-					return self.getCF() 
+					return self.getCF()
 				else:
 					return ""
 			else:
@@ -106,5 +106,5 @@ class OMMetrixWeather(Converter, object):
 		# DEACTIVATED
 		if config.plugins.MetrixWeather.tempUnit.saved_value == "Fahrenheit":
 			return "°"
-		else: 
+		else:
 			return "°"
