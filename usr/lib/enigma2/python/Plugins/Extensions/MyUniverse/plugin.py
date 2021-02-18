@@ -64,7 +64,7 @@ def translateBlock(block):
 config.plugins.MyUniverse = ConfigSubsection()
 #config.skin = ConfigSubsection()
 #General
-config.plugins.MyUniverse.SkinColor = ConfigSelection(default="#007392bd", choices = [
+config.plugins.MyUniverse.SkinColor = ConfigSelection(default="#007392bd", choices=[
 				("#007392bd", _("Blue")),
 				("#0061b8da", _("Lightblue")),
 				("#00a658d3", _("Violett")),
@@ -73,7 +73,7 @@ config.plugins.MyUniverse.SkinColor = ConfigSelection(default="#007392bd", choic
 				("#00b5d364", _("Green")),
 				("#00bbbbbb", _("Grey"))
 				])
-config.plugins.MyUniverse.SkinTransparency = ConfigSelection(default="#bbaaaaaa", choices = [
+config.plugins.MyUniverse.SkinTransparency = ConfigSelection(default="#bbaaaaaa", choices=[
 				("#00aaaaaa", _("Level 1 - Not transparent")),
 				("#22aaaaaa", _("Level 2")),
 				("#44aaaaaa", _("Level 3")),
@@ -89,7 +89,7 @@ def main(session, **kwargs):
 	session.open(MyUniverse, "/usr/lib/enigma2/python/Plugins/Extensions/MyUniverse/images/#007392bd.jpg")
 
 def Plugins(**kwargs):
-	return PluginDescriptor(name="MyUniverse", description=_("Configuration tool for UniverseHD"), where = PluginDescriptor.WHERE_PLUGINMENU, icon="plugin.png", fnc=main)
+	return PluginDescriptor(name="MyUniverse", description=_("Configuration tool for UniverseHD"), where=PluginDescriptor.WHERE_PLUGINMENU, icon="plugin.png", fnc=main)
 
 #######################################################################
 
@@ -126,7 +126,7 @@ class MyUniverse(ConfigListScreen, Screen):
 </screen>
 """
 
-	def __init__(self, session, args = None, picPath = None):
+	def __init__(self, session, args=None, picPath=None):
 		self.skin_lines = []
 		Screen.__init__(self, session)
 		self.session = session
@@ -165,7 +165,7 @@ class MyUniverse(ConfigListScreen, Screen):
 		self.PicLoad.startDecode(self.GetPicturePath())
 		#print("showing image")
 		
-	def DecodePicture(self, PicInfo = ""):
+	def DecodePicture(self, PicInfo=""):
 		#print("decoding picture")
 		ptr = self.PicLoad.getData()
 		self["previewimage"].instance.setPixmap(ptr)	
